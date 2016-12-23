@@ -43,6 +43,10 @@ class Xmp
      */
     const XMP_NS = "http://ns.adobe.com/xap/1.0/";
 
+	const XMP_MM_NS = "http://ns.adobe.com/xap/1.0/mm/";
+	
+	
+	
     /**
      *
      */
@@ -81,7 +85,8 @@ class Xmp
         'xmpRights' => self::XMP_RIGHTS_NS,
         'Iptc4xmpCore' => self::IPTC4_XMP_CORE_NS,
         'Iptc4xmpExt' => self::IPTC4_XMP_EXT_NS,
-        'photomechanic' => self::PHOTO_MECHANIC_NS
+        'photomechanic' => self::PHOTO_MECHANIC_NS,
+		'xmpmm' => self::XMP_MM_NS 
     ];
 
     /**
@@ -539,6 +544,16 @@ class Xmp
         return $this->setAttr('photoshop:Headline', $headline, self::PHOTOSHOP_NS);
     }
 
+	public function getDocumentId()
+	{
+		return $this->getAttr('xmpMM:DocumentID', self::XMP_MM_NS);
+	}
+	
+	public function setDocumentId($guid)
+	{
+		return $this->setAttr('xmpMM:DocumentID', $guid, self::XMP_MM_NS);		
+	}
+	
     /**
      * @return string
      */
